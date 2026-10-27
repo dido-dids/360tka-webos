@@ -35,11 +35,15 @@
     if (mode === 'ctl' && !menuOpen && l[ci]) l[ci].classList.add('focus');
     osd.classList.toggle('seekfocus', mode === 'seek' && !menuOpen);
   }
-  function hideOsd() { clearTimeout(hideT); osd.classList.add('hidden'); mode = 'seek'; paintFocus(); }
+  function hideOsd() {
+    clearTimeout(hideT); osd.classList.add('hidden'); mode = 'seek';
+    if (menuOpen) { menuOpen = false; qmenu.classList.add('hidden'); }
+    paintFocus();
+  }
   function showOsd() {
     osd.classList.remove('hidden'); render(); paintFocus();
     clearTimeout(hideT);
-    if (!video.paused && mode === 'seek' && !menuOpen) hideT = setTimeout(hideOsd, 4500);
+    if (!video.paused) hideT = setTimeout(hideOsd, 4500);
   }
   function icon() { bPlay.className = 'ctl' + (video.paused ? ' paused' : ''); paintFocus(); }
   function setMode(m) {

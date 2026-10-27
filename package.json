@@ -1,6 +1,6 @@
 {
   "name": "360tka-webos",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Neoficiálny open-source prehrávač pre 360tka.sk na LG webOS (Homebrew Channel)",
   "scripts": {
     "serve": "python3 -m http.server 8765 --directory app",
