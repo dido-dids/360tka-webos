@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.ipk
+.DS_Store
+
+# Záznamy zo siete a dáta z vlastnej relácie: môžu obsahovať e-mail, tokeny a interné kľúče
+*.har
+home.json

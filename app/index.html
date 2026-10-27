@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <title>360tka Player</title>
+  <meta name="viewport" content="width=1920, height=1080">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <section id="loading" class="screen hidden">
+    <div class="mid"><img class="logo" src="css/logo.png" alt="360"><div class="spinner"></div></div>
+  </section>
+
+  <section id="login" class="screen">
+    <div class="center">
+      <img class="logo" src="css/logo.png" alt="360">
+      <h1>Prihlásenie</h1>
+      <input id="email" type="email" placeholder="E-mail" autocomplete="off">
+      <input id="password" type="password" placeholder="Heslo" autocomplete="off">
+      <button id="loginBtn" class="btn">Prihlásiť</button>
+      <p id="loginMsg" class="msg"></p>
+    </div>
+  </section>
+
+  <section id="browse" class="screen hidden">
+    <header id="bar">
+      <img class="logo sm" src="css/logo.png" alt="360">
+      <div class="spacer"></div>
+      <div id="searchBox" class="hbtn">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#e6ebff" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="21" y2="21"/></svg>
+        <input id="search" type="text" placeholder="Hľadať" autocomplete="off">
+      </div>
+      <button id="logoutBtn" class="hbtn">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#e6ebff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4H5v16h5"/><path d="M16 8l4 4-4 4"/><line x1="20" y1="12" x2="9" y2="12"/></svg>
+        <span>Odhlásiť</span>
+      </button>
+    </header>
+    <div id="rowsWrap"><div id="rowsInner"></div></div>
+    <div id="empty" class="hidden">Nič sa nenašlo</div>
+    <div id="scroll"><div id="scrollThumb"></div></div>
+  </section>
+
+  <section id="player" class="screen hidden">
+    <video id="video"></video>
+    <div id="spin" class="spinner hidden"></div>
+    <div id="osd" class="hidden">
+      <div id="osdTop">
+        <button id="bBack" class="ctl small"><svg viewBox="0 0 24 24" width="40" height="40"><path fill="#fff" d="M20 11H7.8l5.6-5.6L12 4l-8 8 8 8 1.4-1.4L7.8 13H20z"/></svg></button>
+        <span id="osdTitle"></span>
+      </div>
+      <div id="osdBottom">
+        <div id="bar2"><div id="track"><div id="buf"></div><div id="prog"></div><div id="knob"></div></div></div>
+        <div id="ctrls">
+          <div class="grp">
+            <button id="bPrev" class="ctl hidden"><svg viewBox="0 0 24 24" width="60" height="60"><path fill="#fff" d="M6 5h2.6v14H6zM20 5v14L9.5 12z"/></svg></button>
+            <button id="bRew" class="ctl"><svg viewBox="0 0 48 48" width="64" height="64"><g transform="translate(0 0)"><path d="M24 11A15 15 0 1 1 9 26" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><path d="M24 3.5v15L14 11z" fill="#fff"/></g><text x="24" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Arial,sans-serif">10</text></svg></button>
+            <button id="bPlay" class="ctl paused">
+              <svg class="ip" viewBox="0 0 24 24" width="80" height="80"><path fill="#fff" d="M8 5v14l11-7z"/></svg>
+              <svg class="ii" viewBox="0 0 24 24" width="80" height="80"><path fill="#fff" d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+            </button>
+            <button id="bFwd" class="ctl"><svg viewBox="0 0 48 48" width="64" height="64"><g transform="translate(48 0) scale(-1 1)"><path d="M24 11A15 15 0 1 1 9 26" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><path d="M24 3.5v15L14 11z" fill="#fff"/></g><text x="24" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Arial,sans-serif">10</text></svg></button>
+            <button id="bNext" class="ctl hidden"><svg viewBox="0 0 24 24" width="60" height="60"><path fill="#fff" d="M15.4 5H18v14h-2.6zM4 5v14l10.5-7z"/></svg></button>
+            <button id="bRestart" class="ctl pill hidden">
+              <svg viewBox="0 0 48 48" width="38" height="38"><path d="M24 11A15 15 0 1 1 9 26" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><path d="M24 3.5v15L14 11z" fill="#fff"/></svg>
+              <span class="plabel">Od začiatku</span>
+            </button>
+            <span id="times"><span id="tCur">0:00</span> / <span id="tDur">0:00</span></span>
+          </div>
+          <div class="grp">
+            <button id="bQual" class="ctl pill icon"><svg viewBox="0 0 24 24" width="42" height="42"><path fill="#fff" fill-rule="evenodd" d="M10.06 4.24 L10.52 1.50 L13.48 1.50 L13.94 4.24 L16.12 5.14 L18.38 3.53 L20.47 5.62 L18.86 7.88 L19.76 10.06 L22.50 10.52 L22.50 13.48 L19.76 13.94 L18.86 16.12 L20.47 18.38 L18.38 20.47 L16.12 18.86 L13.94 19.76 L13.48 22.50 L10.52 22.50 L10.06 19.76 L7.88 18.86 L5.62 20.47 L3.53 18.38 L5.14 16.12 L4.24 13.94 L1.50 13.48 L1.50 10.52 L4.24 10.06 L5.14 7.88 L3.53 5.62 L5.62 3.53 L7.88 5.14ZM12 8.4a3.6 3.6 0 1 0 0 7.2a3.6 3.6 0 1 0 0-7.2Z"/></svg><span id="qLabel" class="plabel">Auto</span></button>
+          </div>
+        </div>
+        <div id="qmenu" class="hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /* uložená relácia -> hneď loading (bez bliknutia prihlasovacej obrazovky pred štartom appky) */
+    try { if (localStorage.getItem('tka360.session')) { document.getElementById('login').className += ' hidden'; document.getElementById('loading').className = 'screen'; } } catch (e) {}
+  </script>
+  <div id="toast" class="hidden"></div>
+  <div id="ver"></div>
+
+  <script src="vendor/shaka-player.compiled.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/providers.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/browse.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

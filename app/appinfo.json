@@ -1,0 +1,12 @@
+{
+  "id": "sk.openplayer.tka360",
+  "version": "0.4.6",
+  "vendor": "open-source",
+  "type": "web",
+  "main": "index.html",
+  "title": "360tka Player",
+  "icon": "icon.png",
+  "largeIcon": "largeIcon.png",
+  "resolution": "1920x1080",
+  "disableBackHistoryAPI": true
+}

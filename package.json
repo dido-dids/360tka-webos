@@ -1,0 +1,24 @@
+{
+  "name": "360tka-webos",
+  "version": "0.4.6",
+  "description": "Neoficiálny open-source prehrávač pre 360tka.sk na LG webOS (Homebrew Channel)",
+  "scripts": {
+    "serve": "python3 -m http.server 8765 --directory app",
+    "build": "ares-package app -o dist --no-minify"
+  },
+  "keywords": [
+    "webos",
+    "lg",
+    "tv",
+    "homebrew",
+    "dash",
+    "360tka"
+  ],
+  "author": "",
+  "license": "GPL-3.0-only",
+  "type": "commonjs",
+  "devDependencies": {
+    "@webos-tools/cli": "^3.2.6"
+  },
+  "private": true
+}
