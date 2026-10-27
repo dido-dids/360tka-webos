@@ -27,6 +27,5 @@ Potrebuješ LG TV s nainštalovaným [Homebrew Channel](https://www.webosbrew.or
 Aktualizácie sa ukážu v Homebrew Channel. Verzia appky je v hlavnom menu vpravo dole.
 
 ## Licencia
-GPL-3.0, viď [LICENSE](LICENSE). Appka používa [Shaka Player](https://github.com/shaka-project/shaka-player)
-(Apache-2.0) a písmo [Inter](https://github.com/rsms/inter) (SIL OFL 1.1). Logo 360tka patrí jeho majiteľom a nie je
-súčasťou licencie, používa sa len ako ikona appky.
+GPL-3.0, viď [LICENSE](LICENSE). Logo 360tka patrí jeho majiteľom a nie je súčasťou licencie, používa sa len ako
+ikona appky.
