@@ -1,0 +1,11 @@
+{
+  "packages": [
+    {
+      "id": "sk.openplayer.tka360",
+      "title": "360tka Player",
+      "shortDescription": "Neoficiálny prehrávač pre 360tka.sk (vyžaduje vlastné predplatné)",
+      "iconUri": "https://raw.githubusercontent.com/dido-dids/360tka-webos/main/app/largeIcon.png",
+      "manifestUrl": "https://github.com/dido-dids/360tka-webos/releases/latest/download/sk.openplayer.tka360.manifest.json"
+    }
+  ]
+}
